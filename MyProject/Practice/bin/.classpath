@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="/_UniversalBankingPackager/Deliverables/Support/BankFusionServer.jar"/>
+	<classpathentry kind="src" path="/ReferencedBOs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/BankFusion"/>
+	<classpathentry kind="src" path="/BFUBInfrastructure"/>
+	<classpathentry kind="src" path="/ATMAPIs"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/Common.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2dbgm.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2ext.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2java.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2jcc.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2jcc_license_cu.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2jcc4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2policy.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2qgjava.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2qgjdbc.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/IBM/SQLLIB/java/db2umplugin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

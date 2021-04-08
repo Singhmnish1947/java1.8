@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="javadoc">
+
+	  <!-- =================================================================== -->
+	  <!-- Initialization target                                               -->
+	  <!-- =================================================================== -->
+	  <target name="init">
+
+	  	<property file="./dublin_build.properties"/>
+
+	    <echo message="----------- Javadoc: ${Project} ${version} [${year}] ------------"/>
+
+		  <condition property="runJavadoc">
+		      <equals arg1="${doJavadoc}" arg2="true" />
+		  </condition>
+
+	</target>
+
+	<target name="exeJavadoc" depends="init" if="runJavadoc">
+
+		<mkdir dir="${javadoc.dir}"/>    
+
+		<delete>
+	  	   <fileset dir="${javadoc.dir}" casesensitive="yes">
+	 		   <include name="**/*.*"/>
+	 	   </fileset>       
+	     </delete>
+
+	    <mkdir dir="${javadoc.dir}"/>    
+
+		<javadoc 
+			access="protected" 
+			author="false" 
+			classpath=
+	        	"../${Project}/appClientModule;
+				../BankFusionServerResources/bin;
+				../BankFusionMessaging/bin;
+				../BankFusionClientProps/bin;
+				../BankFusionServerProps/bin;
+				../BankFusionServer/appClientModule;
+				../BankFusionCommonSupport/bin;
+				../BankFusionWASSupport/bin;
+				../BankFusionEJB/ejbModule;
+				${TFSHelperJars}/castor-0.9.7-xml.jar;
+				${TFSHelperJars}/log4j-1.2.11.jar;
+				${TFSHelperJars}/commons-email-1.0.jar;
+				${TFSHelperJars}/xerces.jar;
+				${TFSHelperJars}/JMX_JDMK.jar;
+				${TFSHelperJars}/commons-logging.jar;
+				${TFSHelperJars}/concurr.jar;
+				${WASSupportJars}/ejbportable.jar;
+				${WASSupportJars}/ejbcontainer.jar;
+				${WASSupportJars}/soap-sec.jar;
+				${WASSupportJars}/mofj2ee.jar;
+				${WASSupportJars}/ffdc.jar;
+				${WASSupportJars}/pmimpl.jar;
+				${WASSupportJars}/ws-commons-logging.jar;
+				${WASSupportJars}/b2bxmlSamples.jar;
+				${WASSupportJars}/j2ee.jar;
+				${WASSupportJars}/marshall.jar;
+				${WASSupportJars}/wsif.jar;
+				${WASSupportJars}/b2bjaxp.jar;
+				${WASSupportJars}/commons-discovery.jar;
+				${WASSupportJars}/jmxc.jar;
+				${WASSupportJars}/wsexception.jar;
+				${WASSupportJars}/qname.jar;
+				${WASSupportJars}/appprofile.jar;
+				${WASSupportJars}/b2bxml.jar;
+				${WASSupportJars}/pm.jar;
+				${WASSupportJars}/wsatlib.jar;
+				${WASSupportJars}/ras.jar;
+				${WASSupportJars}/runtimefw.jar;
+				${WASSupportJars}/admin.jar;
+				${WASSupportJars}/wsif-j2c.jar;
+				${WASSupportJars}/vaprt.jar;
+				${WASSupportJars}/rsaexternal.jar;
+				${WASSupportJars}/distexcep.jar;
+				${WASSupportJars}/querymd.jar;
+				${WASSupportJars}/bootstrap.jar;
+				${WASSupportJars}/utils.jar;
+				${WASSupportJars}/servletevent.jar;
+				${WASSupportJars}/bsf.jar;
+				${WASSupportJars}/ecutils.jar;
+				${WASSupportJars}/ivjejb35.jar;
+				${WASSupportJars}/wsdl4j.jar;
+				${WASSupportJars}/commons-logging-api.jar;
+				${WASSupportJars}/webcontainer.jar;
+				${WASSupportJars}/commands.jar;
+				${WASSupportJars}/rsadapterspi.jar;
+				${WASSupportJars}/processintf.jar;
+				${WASSupportJars}/rsadaptercci.jar;
+				${WASSupportJars}/soap.jar;
+				${WASSupportJars}/webservices.jar;
+				${WASSupportJars}/runtime.jar"
+			destdir="${javadoc.dir}" 
+			doctitle="BankFusion Reference Implementation" 
+			nodeprecated="false" 
+			nodeprecatedlist="false" 
+			noindex="false" 
+			nonavbar="false" 
+			notree="false" 
+			packagenames="com.trapedza.bankfusion.*"
+			source="1.3" 
+			sourcepath="../${Project}/appClientModule" 
+			splitindex="true" 
+			use="true" 
+			version="true" >
+	        <bottom><![CDATA[<i>Copyright &#169; 2002-${year}, Trapedza Financial Systems Ltd. All Rights Reserved.</i>]]></bottom>
+	  </javadoc>
+	</target>
+
+	<target name="noJavadoc" depends="init" unless="runJavadoc">
+		<echo message="Javadoc not built because the property 'doJavadoc' is not set to 'true'"/>
+	</target>
+
+	<target name="javadoc" depends="exeJavadoc, noJavadoc">
+	</target>
+</project>

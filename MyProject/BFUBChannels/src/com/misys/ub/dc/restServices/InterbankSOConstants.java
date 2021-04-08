@@ -1,0 +1,83 @@
+package com.misys.ub.dc.restServices;
+
+import com.misys.bankfusion.common.util.BankFusionPropertySupport;
+
+public class InterbankSOConstants {
+	
+	
+	public static final String OPERATIVE_ACCOUNT = "Operative Account";
+	public static final String KEY_ITEM_SEPARTOR = "PAYEMTNS_ITEM_SEPARATOR";
+	public static final String KEY_KEYVALUE_SEPARTOR = "PAYMENTS_KEY_VALUE_SEPARATOR";
+	public static final String INTERBANK_SO_FORECAST = "IBSOF";
+	public static final String INTERBANK_SO_CREATION = "IBSOC";
+	public static final String DEFAULTVALUE_RECORDSEPARATOR = "|";
+	public static final String DEFAULTVALUE_COLUMN_SEPARTOR = ";";
+	public static final String DEFAULTVALUE_KEY_VALUE_SEPARATOR = "=";
+	public static final String PAYMENT_INSTRCUTION_ID = "PaymentInstrcutionId";
+	public static final String CUSTOMERID = "CustomerId";
+	public static final String PAYSYS = "PaySys";
+	public static final String PAYTYPE = "PayType";
+	public static final String DESTINATIONCOUNTRY = "DestinationCountry";
+	public static final String AMOUNT = "Amount";
+	public static final String CURRENCY = "Currency";
+	public static final String DEBTORCUSTREF = "DebtorCustRef";
+	public static final String DEBTORACCOUNTTYPE = "DebtorAccountType";
+	public static final String DEBTORACCOUNT = "DebtorAccount";
+	public static final String DebtorPriority = "DebtorPriority";
+	public static final String DebtorRemittanceInfo = "DebtorRemittanceInfo";
+	public static final String DebtorRemittanceInfoCtgyPurp = "DebtorRemittanceInfoCtgyPurp";
+	public static final String DEBTORBANKIDENTIFIER = "DebtorBankIdentifier";
+	public static final String DebtorBankName = "DebtorBankName";
+	public static final String DebtorBranchAddress = "DebtorBranchAddress";
+	public static final String CDTRNAME = "CdtrName";
+	public static final String CDTRACCOUNTFORMATTYPE = "CdtrAccountFormatType";
+	public static final String CDTRACCOUNT = "CdtrAccount";
+	public static final String CDTRPSTLADRADRTP = "CdtrPstlAdrAdrTp";
+	public static final String CdtrPstlAdrBldgNb = "CdtrPstlAdrBldgNb";
+	public static final String CdtrPstlAdrStrtNm = "CdtrPstlAdrStrtNm";
+	public static final String CdtrPstlAdrSubDept = "CdtrPstlAdrSubDept";
+	public static final String CdtrPstlAdrDept = "CdtrPstlAdrDept";
+	public static final String CdtrPstlAdrPostCd = "CdtrPstlAdrPostCd";
+	public static final String CdtrPstlAdrTownNm = "CdtrPstlAdrTownNm";
+	public static final String CdtrPstlAdrCtrySubDvsn = "CdtrPstlAdrCtrySubDvsn";
+	public static final String CdtrPstlAdrCtry = "CdtrPstlAdrCtry";
+	public static final String CdtrPstlAdrAdrLine = "CdtrPstlAdrAdrLine";
+	public static final String CDTRBANKIDENTIFIER = "CdtrBankIdentifier";
+	public static final String CdtrBankName = "CdtrBankName";
+	public static final String CdtrBranchAddress = "CdtrBranchAddress";
+	public static final String ModuleID = "ModuleID";
+	public static final String ModuleUniqueReference = "ModuleUniqueReference";
+	public static final String CHARGEAMT = "chargeamt";
+	public static final String TAXAMT = "taxAmt";
+	public static final String Chargeswaived = "chargeswaived";
+	public static final String CHARGESCCY = "chargesCcy";
+	public static final String TAXCCY = "taxCcy";
+	public static final String Udfs = "udfs";
+	public static final String ColName = "colName";
+	public static final String Datatype = "datatype";
+	public static final String Value = "value";
+	public static final String CustAcctType = "CustAcctType";
+	public static final String CustAcctNo = "CustAcctNo";
+	public static final String Amt = "Amt";
+	public static final String Ccy = "Ccy";
+	public static final String Freq = "Freq";
+	public static final String EndOfMonth = "EndOfMonth";
+	public static final String NumPayments = "NumPayments";
+	public static final String FrDt = "FrDt";
+	public static final String ToDt = "ToDt";
+	public static final String Time = "Time";
+	public static final String HolidayTreatment = "HolidayTreatment";
+	public static final String Retry = "Retry";
+	public static final String RetryCount = "RetryCount";
+	public static final String SuspendOnFailure = "SuspendOnFailure";
+	public static final String NumberOfFailures = "NumberOfFailures";
+	public static final String Description = "Description";
+	public static final String InstructionId = "InstructionId";
+	public static final String Setup = "Setup";
+	public static final String Success = "Success";
+	public static final String Failure = "Failure";
+	public static final String ChannelID = "ChannelID";
+	public static final String ITEM_SEPARTOR = BankFusionPropertySupport.getProperty(KEY_ITEM_SEPARTOR, DEFAULTVALUE_COLUMN_SEPARTOR);
+	public static final String KEY_VALUE_SEPARATOR = BankFusionPropertySupport.getProperty(KEY_KEYVALUE_SEPARTOR, DEFAULTVALUE_KEY_VALUE_SEPARATOR);
+
+}

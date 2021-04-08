@@ -1,0 +1,166 @@
+package com.finastra.iso8583.atm.decoders;
+
+import org.jboss.netty.buffer.ChannelBuffer;
+import org.jboss.netty.buffer.ChannelBuffers;
+import org.jboss.netty.channel.ChannelUpstreamHandler;
+import org.jboss.netty.handler.codec.embedder.DecoderEmbedder;
+import org.jboss.netty.util.CharsetUtil;
+import org.junit.Assert;
+import org.junit.Test;
+@SuppressWarnings("unchecked")
+public class TestTietoDecoder
+
+{
+	private int lengthFieldOffset = "ISO8583-93".length();
+	private int lengthFieldLength = 6;
+	private int lengthAdjustment = 0;
+	private int initialBytesToStrip = 0;
+	private int mtiFieldLength = 4;
+	private int primaryBitMapOffset = this.lengthFieldOffset + this.lengthFieldLength + this.mtiFieldLength;
+	private int primaryBitMapLength = 8;
+	private int secondaryBitMapLength = 8;
+	private int maxFrameLength = 16384;
+	String requestMsg1100 = "49534F383538332D393330303034333631313030F47405C1AEE1A0000100000E140000003136343430373833303031373737303637393031303030303030303030303030313030303030303030303030313030303631303030303030373833363534313230313133313730323133313331313531313130313931333134363130303135303336303131303634343037383230365254505349443337343430373833303031373737303637393D313331313132313130313934383336303030303032303133313737383336353436383132313330303041544D303235352030303638303235352020202020202034304E414E59554B4942523030313E4E414E59554B492020202020202020202020202020202020204B45303039414F35304F323232204B45534B45533037374C3031303731414331303030414C313030323130414D31303034313030304359313030334B45534C494430303531383639394F545930303331325A52545930303331315A54595030303331325A3131427573685F496E73696465303839373530303032303138524F574E30313138353233353738333635343131427573685F496E7369646530323130";
+	String requestMsg1200 = "49534F383538332D393330303034363231323030F67405D9AEE1A0000100000E14000000313634343037383330303137373730363739303130303030303030303030303031303030303030303030303031303030303131333137313332303631303030303030373833363538313230313133313731333230313331313531313130313931333134363230303135303336303131313230313133313031303634343037383230365254505349443337343430373833303031373737303637393D313331313132313130313934383336303030303032303133313737383336353838393135353330303041544D303235352030303638303235352020202020202034304E414E59554B4942523030313E4E414E59554B492020202020202020202020202020202020204B45303039414F35304F323232204B45534B455330383454303130373841433130303041435430303143414D3030303431303030414D31303034313030304359303030334B45534359313030334B45534F54593030333230375254593030333232375459503030333230373131427573685F496E73696465303839373530303032303138524F574E30313138353233353738333635383131427573685F496E7369646530323130";
+	String requestMsg1220 = "49534F383538332D393330303034323331323230F67405D98EE1A0000100000E140000003136343430373833303031373737303637393031303030303030303030303030313030303030303030303030313030303031313331373134343836313030303030303738333635393132303131333137313434383133313135313131303139313331343632303031353033363031313132303131333130313036343430373832303652545053494432303133313737383336353934303331353530303041544D303235352030303638303235352020202020202034304E414E59554B4942523030313E4E414E59554B492020202020202020202020202020202020204B45303039414F35304F323232204B45534B455330383454303130373841433130303041435430303143414D3030303431303030414D31303034313030304359303030334B45534359313030334B45534F54593030333230375254593030333232375459503030333230373131427573685F496E73696465303839373530303032303138524F574E30313138353233353738333635393131427573685F496E7369646530323130";
+	String requestMsg1420 = "49534F383538332D393330303034373631343230F47405C58EE1A1000100000E14000000313634343037383330303137373730363739303130303030303030303030303031303030303030303030303031303030363130303030303037383336353631323031313331373131333031333131353131313031393133313436343030343030313630313132342020202020202020313030302020202020202020313030303036343430373832303652545053494432303133313737383336353436383132313334303041544D303235352030303638303235352020202020202034304E414E59554B4942523030313E4E414E59554B492020202020202020202020202020202020204B45303039414F35304F323232204B45534B455333303131303037383336353431323031313331373032313330363434303738323130304C3031303731414331303030414C313030323130414D31303034313030304359313030334B45534C494430303531383730314F545930303331325A52545930303331325A54595030303331315A4F52473031374D494430313138353233353738333635343131427573685F496E7369646530363432383030303138524F574E30313138353233353738333635363131427573685F496E7369646530323130";
+	String requestMsg1804Example1 = "49534F383538332D3933303030303439313830340030010000000000323332333336313230323133313234343133383031";
+	String requestMsg1804Example2 = "49534F383538332D3933303030303439313830340030010000000000323332333336313230323133313234343133383032";
+	String requestMsg1804Example3 = "49534F383538332D3933303030303439313830340030010000000000323332333336313230323133313234343133383331";
+	private byte[] requestMessage1100Array = hexStringToByteArray(this.requestMsg1100);
+	private byte[] requestMessage1200Array = hexStringToByteArray(this.requestMsg1200);
+	private byte[] requestMessage1220Array = hexStringToByteArray(this.requestMsg1220);
+	private byte[] requestMessage1420Array = hexStringToByteArray(this.requestMsg1420);
+	private byte[] requestMessage1804ArrayExample1 = hexStringToByteArray(this.requestMsg1804Example1);
+	private byte[] requestMessage1804ArrayExample2 = hexStringToByteArray(this.requestMsg1804Example2);
+	private byte[] requestMessage1804ArrayExample3 = hexStringToByteArray(this.requestMsg1804Example3);
+	String decodedMsg1100 = "ISO8583-930004361100F47405C1AEE1A0000100000E14000000164407830017770679010000000000001000000000001000610000007836541201131702131311511101913146100150360110644078206RTPSID374407830017770679=13111211019483600000201317783654681213000ATM0255 00680255       40NANYUKIBR001>NANYUKI                  KE009AO50O222 KESKES077L01071AC1000AL100210AM10041000CY1003KESLID00518699OTY00312ZRTY00311ZTYP00312Z11Bush_Inside089750002018ROWN0118523578365411Bush_Inside0210";
+	String decodedMsg1200 = "ISO8583-930004621200F67405D9AEE1A0000100000E140000001644078300177706790100000000000010000000000010000113171320610000007836581201131713201311511101913146200150360111201131010644078206RTPSID374407830017770679=13111211019483600000201317783658891553000ATM0255 00680255       40NANYUKIBR001>NANYUKI                  KE009AO50O222 KESKES084T01078AC1000ACT001CAM00041000AM10041000CY0003KESCY1003KESOTY003207RTY003227TYP00320711Bush_Inside089750002018ROWN0118523578365811Bush_Inside0210";
+	String decodedMsg1220 = "ISO8583-930004231220F67405D98EE1A0000100000E140000001644078300177706790100000000000010000000000010000113171448610000007836591201131714481311511101913146200150360111201131010644078206RTPSID201317783659403155000ATM0255 00680255       40NANYUKIBR001>NANYUKI                  KE009AO50O222 KESKES084T01078AC1000ACT001CAM00041000AM10041000CY0003KESCY1003KESOTY003207RTY003227TYP00320711Bush_Inside089750002018ROWN0118523578365911Bush_Inside0210";
+	String decodedMsg1420 = "ISO8583-930004761420F47405C58EE1A1000100000E140000001644078300177706790100000000000010000000000010006100000078365612011317113013115111019131464004001601124        1000        10000644078206RTPSID201317783654681213400ATM0255 00680255       40NANYUKIBR001>NANYUKI                  KE009AO50O222 KESKES30110078365412011317021306440782100L01071AC1000AL100210AM10041000CY1003KESLID00518701OTY00312ZRTY00312ZTYP00311ZORG017MID0118523578365411Bush_Inside0642800018ROWN0118523578365611Bush_Inside0210";
+	String decodedMsg1804example1 = "ISO8583-9300004918040030010000000000232336120213124413801";
+	String decodedMsg1804example2 = "ISO8583-9300004918040030010000000000232336120213124413802";
+	String decodedMsg1804example3 = "ISO8583-9300004918040030010000000000232336120213124413831";
+
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void testTietoISO8583DecodersForRequestMsg1100() {
+		ChannelBuffer msgData = ChannelBuffers.copiedBuffer(this.requestMessage1100Array);
+		
+		DecoderEmbedder<String> embedder = new DecoderEmbedder(new ChannelUpstreamHandler[] {
+				new TietoFramedecoder(this.maxFrameLength, this.lengthFieldOffset, this.lengthFieldLength,
+						this.lengthAdjustment, this.initialBytesToStrip, CharsetUtil.US_ASCII),
+				new TietoStringDecoder(this.primaryBitMapOffset, this.primaryBitMapLength, this.secondaryBitMapLength,
+						CharsetUtil.US_ASCII) });
+
+		embedder.offer(msgData);
+
+		String decoded = (String) embedder.poll();
+		Assert.assertEquals(this.decodedMsg1100, decoded);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void testTietoISO8583DecodersForRequestMsg1200() {
+		ChannelBuffer msgData = ChannelBuffers.copiedBuffer(this.requestMessage1200Array);
+		DecoderEmbedder<String> embedder = new DecoderEmbedder(new ChannelUpstreamHandler[] {
+				new TietoFramedecoder(this.maxFrameLength, this.lengthFieldOffset, this.lengthFieldLength,
+						this.lengthAdjustment, this.initialBytesToStrip, CharsetUtil.US_ASCII),
+				new TietoStringDecoder(this.primaryBitMapOffset, this.primaryBitMapLength, this.secondaryBitMapLength,
+						CharsetUtil.US_ASCII) });
+
+		embedder.offer(msgData);
+
+		String decoded = (String) embedder.poll();
+		Assert.assertEquals(this.decodedMsg1200, decoded);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void testTietoISO8583FrameDecodersForRequestMsg1220() {
+		ChannelBuffer msgData = ChannelBuffers.copiedBuffer(this.requestMessage1220Array);
+		DecoderEmbedder<String> embedder = new DecoderEmbedder(new ChannelUpstreamHandler[] {
+				new TietoFramedecoder(this.maxFrameLength, this.lengthFieldOffset, this.lengthFieldLength,
+						this.lengthAdjustment, this.initialBytesToStrip, CharsetUtil.US_ASCII),
+				new TietoStringDecoder(this.primaryBitMapOffset, this.primaryBitMapLength, this.secondaryBitMapLength,
+						CharsetUtil.US_ASCII) });
+
+		embedder.offer(msgData);
+
+		String decoded = (String) embedder.poll();
+		Assert.assertEquals(this.decodedMsg1220, decoded);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void testTietoISO8583FrameDecodersForRequestMsg1420() {
+		ChannelBuffer msgData = ChannelBuffers.copiedBuffer(this.requestMessage1420Array);
+		DecoderEmbedder<String> embedder = new DecoderEmbedder(new ChannelUpstreamHandler[] {
+				new TietoFramedecoder(this.maxFrameLength, this.lengthFieldOffset, this.lengthFieldLength,
+						this.lengthAdjustment, this.initialBytesToStrip, CharsetUtil.US_ASCII),
+				new TietoStringDecoder(this.primaryBitMapOffset, this.primaryBitMapLength, this.secondaryBitMapLength,
+						CharsetUtil.US_ASCII) });
+
+		embedder.offer(msgData);
+
+		String decoded = (String) embedder.poll();
+		Assert.assertEquals(this.decodedMsg1420, decoded);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void testTietoISO8583FrameDecodersForRequestMsg1804Example1() {
+		ChannelBuffer msgData = ChannelBuffers.copiedBuffer(this.requestMessage1804ArrayExample1);
+		DecoderEmbedder<String> embedder = new DecoderEmbedder(new ChannelUpstreamHandler[] {
+				new TietoFramedecoder(this.maxFrameLength, this.lengthFieldOffset, this.lengthFieldLength,
+						this.lengthAdjustment, this.initialBytesToStrip, CharsetUtil.US_ASCII),
+				new TietoStringDecoder(this.primaryBitMapOffset, this.primaryBitMapLength, this.secondaryBitMapLength,
+						CharsetUtil.US_ASCII) });
+
+		embedder.offer(msgData);
+
+		String decoded = (String) embedder.poll();
+		Assert.assertEquals(this.decodedMsg1804example1, decoded);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void testTietoISO8583FrameDecodersForRequestMsg1804Example2() {
+		ChannelBuffer msgData = ChannelBuffers.copiedBuffer(this.requestMessage1804ArrayExample2);
+		DecoderEmbedder<String> embedder = new DecoderEmbedder(new ChannelUpstreamHandler[] {
+				new TietoFramedecoder(this.maxFrameLength, this.lengthFieldOffset, this.lengthFieldLength,
+						this.lengthAdjustment, this.initialBytesToStrip, CharsetUtil.US_ASCII),
+				new TietoStringDecoder(this.primaryBitMapOffset, this.primaryBitMapLength, this.secondaryBitMapLength,
+						CharsetUtil.US_ASCII) });
+
+		embedder.offer(msgData);
+
+		String decoded = (String) embedder.poll();
+		Assert.assertEquals(this.decodedMsg1804example2, decoded);
+	}
+
+	@SuppressWarnings({ "rawtypes" })
+	@Test
+	public void testTietoISO8583FrameDecodersForRequestMsg1804Example3() {
+		ChannelBuffer msgData = ChannelBuffers.copiedBuffer(this.requestMessage1804ArrayExample3);
+		DecoderEmbedder<String> embedder = new DecoderEmbedder(new ChannelUpstreamHandler[] {
+				new TietoFramedecoder(this.maxFrameLength, this.lengthFieldOffset, this.lengthFieldLength,
+						this.lengthAdjustment, this.initialBytesToStrip, CharsetUtil.US_ASCII),
+				new TietoStringDecoder(this.primaryBitMapOffset, this.primaryBitMapLength, this.secondaryBitMapLength,
+						CharsetUtil.US_ASCII) });
+
+		embedder.offer(msgData);
+
+		String decoded = embedder.poll();
+		Assert.assertEquals(this.decodedMsg1804example3, decoded);
+	}
+
+	public static byte[] hexStringToByteArray(String s) {
+		int len = s.length();
+		byte[] data = new byte[len / 2];
+		for (int i = 0; i < len; i += 2) {
+			data[(i / 2)] = ((byte) ((Character.digit(s.charAt(i), 16) << 4) + Character.digit(s.charAt(i + 1), 16)));
+		}
+		return data;
+	}
+}

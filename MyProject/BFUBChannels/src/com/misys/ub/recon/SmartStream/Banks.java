@@ -1,0 +1,203 @@
+package com.misys.ub.recon.SmartStream;
+
+public class Banks {
+
+	private String PARTNER_REC_TYPE;
+	private String PARTNER_MESSAGE;
+	private String PARTNER_BANK_CODE;
+	private String PARTNER_SHORT_NAME;
+	private String PARTNER_FULL_NAME;
+	private String PARTNER_ADDRESS;
+	private String PARTNER_TYPE;
+	private String PARTNER_SWIFT_ADDR1;
+	private String PARTNER_SWIFT_ADDR2;
+	private String PARTNER_SWIFT_ADDR3;
+	private String PARTNER_SWIFT_ADDR4;
+	private String PARTNER_USER_CODE;
+	private String PARTNER_CONTACT;
+	private String PARTNER_LANGUAGE;
+	private String PARTNER_TELL_NR;
+	private String PARTNER_FAX_NR;
+	private String PARTNER_TELEX_NR;
+	private String PARTNER_EMAIL_ADDR;
+	private String FILLER;
+
+	public Banks() {
+		setPARTNER_ADDRESS("");
+		setPARTNER_SWIFT_ADDR1("");
+		setPARTNER_SWIFT_ADDR2("");
+		setPARTNER_SWIFT_ADDR3("");
+		setPARTNER_SWIFT_ADDR4("");
+		setPARTNER_USER_CODE("");
+		setPARTNER_CONTACT("");
+		setPARTNER_LANGUAGE("");
+		setPARTNER_TELL_NR("");
+		setPARTNER_FAX_NR("");
+		setPARTNER_TELEX_NR("");
+		setPARTNER_EMAIL_ADDR("");
+		setFILLER("");
+	}
+
+	public String getPARTNER_REC_TYPE() {
+		return PARTNER_REC_TYPE;
+	}
+
+	public void setPARTNER_REC_TYPE(String pARTNERRECTYPE) {
+		PARTNER_REC_TYPE = pARTNERRECTYPE;
+	}
+
+	public String getPARTNER_MESSAGE() {
+		return PARTNER_MESSAGE;
+	}
+
+	public void setPARTNER_MESSAGE(String pARTNERMESSAGE) {
+		PARTNER_MESSAGE = pARTNERMESSAGE;
+	}
+
+	public String getPARTNER_BANK_CODE() {
+		return PARTNER_BANK_CODE;
+	}
+
+	public void setPARTNER_BANK_CODE(String pARTNERBANKCODE) {
+		PARTNER_BANK_CODE = pARTNERBANKCODE;
+	}
+
+	public String getPARTNER_SHORT_NAME() {
+		return PARTNER_SHORT_NAME;
+	}
+
+	public void setPARTNER_SHORT_NAME(String pARTNERSHORTNAME) {
+		PARTNER_SHORT_NAME = pARTNERSHORTNAME;
+	}
+
+	public String getPARTNER_FULL_NAME() {
+		return PARTNER_FULL_NAME;
+	}
+
+	public void setPARTNER_FULL_NAME(String pARTNERFULLNAME) {
+		PARTNER_FULL_NAME = pARTNERFULLNAME;
+	}
+
+	public String getPARTNER_ADDRESS() {
+		return PARTNER_ADDRESS;
+	}
+
+	public void setPARTNER_ADDRESS(String pARTNERADDRESS) {
+		PARTNER_ADDRESS = pARTNERADDRESS;
+	}
+
+	public String getPARTNER_TYPE() {
+		return PARTNER_TYPE;
+	}
+
+	public void setPARTNER_TYPE(String pARTNERTYPE) {
+		PARTNER_TYPE = pARTNERTYPE;
+	}
+
+	public String getPARTNER_SWIFT_ADDR1() {
+		return PARTNER_SWIFT_ADDR1;
+	}
+
+	public void setPARTNER_SWIFT_ADDR1(String pARTNERSWIFTADDR1) {
+		PARTNER_SWIFT_ADDR1 = pARTNERSWIFTADDR1;
+	}
+
+	public String getPARTNER_SWIFT_ADDR2() {
+		return PARTNER_SWIFT_ADDR2;
+	}
+
+	public void setPARTNER_SWIFT_ADDR2(String pARTNERSWIFTADDR2) {
+		PARTNER_SWIFT_ADDR2 = pARTNERSWIFTADDR2;
+	}
+
+	public String getPARTNER_SWIFT_ADDR3() {
+		return PARTNER_SWIFT_ADDR3;
+	}
+
+	public void setPARTNER_SWIFT_ADDR3(String pARTNERSWIFTADDR3) {
+		PARTNER_SWIFT_ADDR3 = pARTNERSWIFTADDR3;
+	}
+
+	public String getPARTNER_SWIFT_ADDR4() {
+		return PARTNER_SWIFT_ADDR4;
+	}
+
+	public void setPARTNER_SWIFT_ADDR4(String pARTNERSWIFTADDR4) {
+		PARTNER_SWIFT_ADDR4 = pARTNERSWIFTADDR4;
+	}
+
+	public String getPARTNER_USER_CODE() {
+		return PARTNER_USER_CODE;
+	}
+
+	public void setPARTNER_USER_CODE(String pARTNERUSERCODE) {
+		PARTNER_USER_CODE = pARTNERUSERCODE;
+	}
+
+	public String getPARTNER_CONTACT() {
+		return PARTNER_CONTACT;
+	}
+
+	public void setPARTNER_CONTACT(String pARTNERCONTACT) {
+		PARTNER_CONTACT = pARTNERCONTACT;
+	}
+
+	public String getPARTNER_LANGUAGE() {
+		return PARTNER_LANGUAGE;
+	}
+
+	public void setPARTNER_LANGUAGE(String pARTNERLANGUAGE) {
+		PARTNER_LANGUAGE = pARTNERLANGUAGE;
+	}
+
+	public String getPARTNER_TELL_NR() {
+		return PARTNER_TELL_NR;
+	}
+
+	public void setPARTNER_TELL_NR(String pARTNERTELLNR) {
+		PARTNER_TELL_NR = pARTNERTELLNR;
+	}
+
+	public String getPARTNER_FAX_NR() {
+		return PARTNER_FAX_NR;
+	}
+
+	public void setPARTNER_FAX_NR(String pARTNERFAXNR) {
+		PARTNER_FAX_NR = pARTNERFAXNR;
+	}
+
+	public String getPARTNER_TELEX_NR() {
+		return PARTNER_TELEX_NR;
+	}
+
+	public void setPARTNER_TELEX_NR(String pARTNERTELEXNR) {
+		PARTNER_TELEX_NR = pARTNERTELEXNR;
+	}
+
+	public String getPARTNER_EMAIL_ADDR() {
+		return PARTNER_EMAIL_ADDR;
+	}
+
+	public void setPARTNER_EMAIL_ADDR(String pARTNEREMAILADDR) {
+		PARTNER_EMAIL_ADDR = pARTNEREMAILADDR;
+	}
+
+	public String getFILLER() {
+		return FILLER;
+	}
+
+	public void setFILLER(String fILLER) {
+		FILLER = fILLER;
+	}
+
+	public String toString() {
+		return "PARTNER_REC_TYPE " + PARTNER_REC_TYPE + "\nPARTNER_MESSAGE " + PARTNER_MESSAGE + "\nPARTNER_BANK_CODE " + PARTNER_BANK_CODE
+				+ "\nPARTNER_SHORT_NAME " + PARTNER_SHORT_NAME + "\nPARTNER_FULL_NAME " + PARTNER_FULL_NAME + "\nPARTNER_ADDRESS "
+				+ PARTNER_ADDRESS + "\nPARTNER_TYPE " + PARTNER_TYPE + "\nPARTNER_SWIFT_ADDR1 " + PARTNER_SWIFT_ADDR1
+				+ "\nPARTNER_SWIFT_ADDR2 " + PARTNER_SWIFT_ADDR2 + "\nPARTNER_SWIFT_ADDR3 " + PARTNER_SWIFT_ADDR3
+				+ "\nPARTNER_SWIFT_ADDR4 " + PARTNER_SWIFT_ADDR4 + "\nPARTNER_USER_CODE " + PARTNER_USER_CODE + "\nPARTNER_CONTACT "
+				+ PARTNER_CONTACT + "\nPARTNER_LANGUAGE " + PARTNER_LANGUAGE + "\nPARTNER_TELL_NR " + PARTNER_TELL_NR + "\nPARTNER_FAX_NR "
+				+ PARTNER_FAX_NR + "\nPARTNER_TELEX_NR " + PARTNER_TELEX_NR + "\nPARTNER_EMAIL_ADDR " + PARTNER_EMAIL_ADDR + "\nFILLER "
+				+ FILLER + "\n";
+	}
+}

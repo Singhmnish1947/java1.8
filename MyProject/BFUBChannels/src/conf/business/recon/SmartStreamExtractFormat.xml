@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+  **********************************************************************************
+  * Copyright (c) 2002,2013 Misys. All Rights Reserved..
+  *
+  * This software is proprietary to Misys. Use is subject to license terms.
+  *
+  * *********************************************************************************
+-->
+<!--<!DOCTYPE file-format SYSTEM "http://www.blackbear.com/dtds/flatworm-data-description_1_0.dtd">-->
+<file-format>
+	<converter name="char"
+		class="com.blackbear.flatworm.converters.CoreConverters" method="convertChar"
+		return-type="java.lang.String" />
+	<record name="bankData">
+		<record-definition>
+			<bean name="bank" class="com.misys.ub.recon.SmartStream.Banks" />
+			<line>
+				<record-element length="1" beanref="bank.PARTNER_REC_TYPE"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="16" beanref="bank.PARTNER_BANK_CODE"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="20" beanref="bank.PARTNER_SHORT_NAME"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="35" beanref="bank.PARTNER_FULL_NAME"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="125" beanref="bank.PARTNER_ADDRESS"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="1" beanref="bank.PARTNER_TYPE"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="11" beanref="bank.PARTNER_SWIFT_ADDR1"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="11" beanref="bank.PARTNER_SWIFT_ADDR2"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="11" beanref="bank.PARTNER_SWIFT_ADDR3"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="11" beanref="bank.PARTNER_SWIFT_ADDR4"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="8" beanref="bank.PARTNER_USER_CODE"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+			</line>
+		</record-definition>
+	</record>
+	<record name="contactPersonData">
+		<record-definition>
+			<bean name="contactPerson" class="com.misys.ub.recon.SmartStream.Banks" />
+			<line>
+				<record-element length="1" beanref="bank.PARTNER_REC_TYPE"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="35" beanref="bank.PARTNER_CONTACT"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="1" beanref="bank.PARTNER_LANGUAGE"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="30" beanref="bank.PARTNER_TELL_NR"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="30" beanref="bank.PARTNER_FAX_NR"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="25" beanref="bank.PARTNER_TELEX_NR"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="50" beanref="bank.PARTNER_EMAIL_ADDR"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="78" beanref="bank.FILLER"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+			</line>
+		</record-definition>
+	</record>
+	<record name="accountData">
+		<record-definition>
+			<bean name="account" class="com.misys.ub.recon.SmartStream.Accounts" />
+			<line>
+				<record-element length="35" beanref="account.CORONA_Acc"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="35" beanref="account.CORONA_Acc_Name"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="3" beanref="account.ISOCurrencyCode"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="20" beanref="account.currency"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="2" beanref="account.currency_Frac"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="35" beanref="account.accountID"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="35" beanref="account.accountName"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="1" beanref="account.origin"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="5" beanref="account.initial_Stmt_No"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="3" beanref="account.initial_Stmt_Pg_No"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="8" beanref="account.initial_Stmt_Bal_Date"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="18" beanref="account.initial_Stmt_Amount"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="1" beanref="account.initial_Stmt_Amount_Sign"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="11" beanref="account.receiver_Addr"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="1" beanref="account.reciever_Addr_Type"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="11" beanref="account.sender_Addr"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="1" beanref="account.sender_Addr_Type"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="35" beanref="account.bankName"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+			</line>
+		</record-definition>
+	</record>
+
+	<record name="exchangeRateData">
+		<record-definition>
+			<bean name="exchangeRate" class="com.misys.cbs.recon.SmartStream.ExchangeRates" />
+			<line>
+				<record-element length="5" beanref="exchangeRate.exchangeRateHeader"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="8" beanref="exchangeRate.bankCode"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="3" beanref="exchangeRate.branch"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="3" beanref="exchangeRate.currency"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="4" beanref="exchangeRate.unit"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="18" beanref="exchangeRate.bidRate"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="18" beanref="exchangeRate.askRate"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="10" beanref="exchangeRate.midRateAmount"
+					type="char">
+					<conversion-option name="justify" value="right" />
+					<conversion-option name="pad-character" value="0" />
+				</record-element>
+				<record-element length="8" beanref="exchangeRate.midRateDecimal"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value="0" />
+				</record-element>
+				<record-element length="7" beanref="exchangeRate.margin"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="8" beanref="exchangeRate.date"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="4" beanref="exchangeRate.time"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+				<record-element length="1" beanref="exchangeRate.quotationFlag"
+					type="char">
+					<conversion-option name="justify" value="left" />
+					<conversion-option name="pad-character" value=" " />
+				</record-element>
+			</line>
+		</record-definition>
+	</record>
+</file-format>
